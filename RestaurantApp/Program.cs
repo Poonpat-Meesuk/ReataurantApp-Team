@@ -1,34 +1,82 @@
-﻿using RestaurantApp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace RestaurantApp
 {
-    public class Restaurant
+    internal class Program
     {
-        public string type { get; set; }
-        public double score { get; set; }
-        public int id { get; set; }              
-    }
-    public Restaurant(string type, double score, int id)
+        public class Restaurant
         {
-            this.type = type;
-            this.score = score;
-            this.id = id;
-            this.type = type;
-        }
-    public void เพิ่มข้อมูล()
-        {
-            Console.WriteLine($"รหัส:{id} | ประเภท: {type} | คะแนน: {score}");
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Type { get; set; }
+            public double Rating { get; set; }
+
+
+            public Restaurant(int id, string name, string type, double rating)
+            {
+                Id = id;
+                Name = name;
+                Type = type;
+                Rating = rating;
+            }
         }
 
-    public void Main(string[] args)
+
+        static void Main(string[] args)
         {
-            List<Restaurant> restaurantslist = new List<Restaurant>();
+            List<Restaurant> restaurants = new List<Restaurant>
+            {
+            new Restaurant(1, "Quanjude Roast Duck", "Beijing Cuisine", 4.5),
+            new Restaurant(2, "Donglaishun Hot Pot", "Hot Pot", 4.6),
+            new Restaurant(3, "Din Tai Fung", "Taiwanese Cuisine", 4.7),
+            new Restaurant(4, "Haidilao Hot Pot", "Hot Pot", 4.8),
+            new Restaurant(5, "Peking Garden", "Chinese Cuisine", 4.4)
+            };
+
+
+            foreach (Restaurant restaurant in restaurants)
+            {
+                Console.WriteLine(
+                    $"รหัส: {restaurant.Id}, " +
+                    $"ชื่อ: {restaurant.Name}, " +
+                    $"ประเภท: {restaurant.Type}, " +
+                    $"คะแนน: {restaurant.Rating}");
+            }
+
+
+            Console.WriteLine("------------------------------");
+
+
+            Console.WriteLine($"จำนวนร้านทั้งหมด: {restaurants.Count}");
+
+
+            double averageRating = 0;
+
+
+            if (restaurants.Count > 0)
+            {
+                double totalRating = 0;
+
+
+                foreach (Restaurant restaurant in restaurants)
+                {
+                    totalRating += restaurant.Rating;
+                }
+
+
+                averageRating = totalRating / restaurants.Count;
+            }
+
+
+            Console.WriteLine($"คะแนนเฉลี่ย: {averageRating:F2}");
+            Console.WriteLine("โปรแกรมจัดการร้านอาหารเสร็จสมบูรณ์แล้ว");
+
+
         }
     }
 }
