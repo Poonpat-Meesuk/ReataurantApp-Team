@@ -95,16 +95,15 @@ namespace RestaurantApp
                 }
             } while (string.IsNullOrWhiteSpace(name));
 
-            string type;
-            do
-            {
-                Console.Write("ประเภท: ");
-                type = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(type))
-                {
-                    Console.WriteLine("ประเภทห้ามว่าง");
-                }
-            } while (string.IsNullOrWhiteSpace(type));
+        }
+        static void AddRestaurant(List<Restaurant> restaurants)
+        {
+
+            Console.Write("ชื่อร้าน: ");
+            string name = Console.ReadLine();
+
+            Console.Write("ประเภท: ");
+            string type = Console.ReadLine();
 
             double rating;
             while (true)
