@@ -160,6 +160,36 @@ namespace RestaurantApp
         //C
         static void ShowSummary(List<Restaurant> restaurants)
         {
+            if (restaurants.Count == 0)
+            {
+                Console.WriteLine("ยังไม่มีร้านในระบบ");
+                return;
+            }
+
+
+            Restaurant highest = restaurants[0];
+            Restaurant lowest = restaurants[0];
+
+
+            foreach (Restaurant restaurant in restaurants)
+            {
+                if (restaurant.Rating > highest.Rating)
+                {
+                    highest = restaurant;
+                }
+
+
+                if (restaurant.Rating < lowest.Rating)
+                {
+                    lowest = restaurant;
+                }
+            }
+
+
+            Console.WriteLine("=== สรุปคะแนนร้านอาหาร ===");
+            Console.WriteLine($"ร้านคะแนนสูงสุด: {highest.Name} ({highest.Type}) คะแนน {highest.Rating}");
+            Console.WriteLine($"ร้านคะแนนต่ำสุด: {lowest.Name} ({lowest.Type}) คะแนน {lowest.Rating}");
+            Console.WriteLine("------------------------------");
         }
     }
 }
