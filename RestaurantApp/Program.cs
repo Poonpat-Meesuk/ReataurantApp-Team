@@ -125,6 +125,37 @@ namespace RestaurantApp
         //B
         static void ShowGoodRating(List<Restaurant> restaurants)
         {
+            Console.WriteLine("=== ร้านที่คะแนนตั้งแต่ 4.5 ขึ้นไป ===");
+
+
+            int count = 0;
+
+
+            foreach (Restaurant restaurant in restaurants)
+            {
+                if (restaurant.Rating >= 4.5)
+                {
+                    Console.WriteLine(
+                        $"รหัส: {restaurant.Id}, " +
+                        $"ชื่อ: {restaurant.Name}, " +
+                        $"ประเภท: {restaurant.Type}, " +
+                        $"คะแนน: {restaurant.Rating}");
+                    count++;
+                }
+            }
+
+
+            if (count == 0)
+            {
+                Console.WriteLine("ไม่พบร้านที่คะแนนตั้งแต่ 4.5 ขึ้นไป");
+            }
+            else
+            {
+                Console.WriteLine($"พบทั้งหมด {count} ร้าน");
+            }
+
+
+            Console.WriteLine("------------------------------");
         }
         //C
         static void ShowSummary(List<Restaurant> restaurants)
