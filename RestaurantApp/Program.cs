@@ -95,33 +95,6 @@ namespace RestaurantApp
                 }
             } while (string.IsNullOrWhiteSpace(name));
 
-            string type;
-            do
-            {
-                Console.Write("ประเภท: ");
-                type = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(type))
-                {
-                    Console.WriteLine("ประเภทห้ามว่าง");
-                }
-            } while (string.IsNullOrWhiteSpace(type));
-
-            double rating;
-            while (true)
-            {
-                Console.Write("คะแนน (0-5): ");
-                if (double.TryParse(Console.ReadLine(), out rating) && rating >= 0 && rating <= 5)
-                {
-                    break;
-                }
-                Console.WriteLine("กรุณากรอกตัวเลข 0 ถึง 5");
-            }
-
-            int newId = restaurants.Count > 0 ? restaurants.Max(r => r.Id) + 1 : 1;
-            restaurants.Add(new Restaurant(newId, name, type, rating));
-
-            Console.WriteLine($"เพิ่มร้าน \"{name}\" เรียบร้อยแล้ว (รหัส {newId})");
-            Console.WriteLine("------------------------------");
         }
         //B
         static void ShowGoodRating(List<Restaurant> restaurants)
